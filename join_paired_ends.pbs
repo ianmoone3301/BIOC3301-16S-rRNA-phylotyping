@@ -14,10 +14,11 @@ module load miniconda/python2
 
 echo "loading virtualenv"
 
-source activate qiime1
-
 mkdir -p ~/qiime_tmp
+
 export TMPDIR=~/qiime_tmp
+
+source activate qiime
 
 join_paired_ends.py -m SeqPrep -f Read1.fastq.gz -r Read2.fastq.gz -b Index.fastq.gz -o /lustre/home/d411/pete/2018_02_smb
 
