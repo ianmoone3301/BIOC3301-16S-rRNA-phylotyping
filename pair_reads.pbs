@@ -1,0 +1,24 @@
+#!/bin/bash --login
+
+#PBS -l Walltime=02:00:00
+
+#PBS -l select=1:ncpus=4
+
+#PBS -N 2018_cr_nojoin_no_golay_serial
+
+#PBS -A d411-training
+
+cd $PBS_O_WORKDIR
+
+module load miniconda/python2
+
+echo "loading virtualenv"
+
+source activate qiime1
+
+mkdir -p ~/qiime_tmp
+export TMPDIR=~/qiime_tmp
+
+join_paired_ends.py -m SeqPrep -f Read1.fastq.gz -r Read2.fastq.gz -b Index.fastq.gz -o /lustre/home/d411/pete/2018_02_smb
+
+source deactivate

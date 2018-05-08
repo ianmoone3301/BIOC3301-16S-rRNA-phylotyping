@@ -1,0 +1,24 @@
+#!/bin/bash --login
+
+#PBS -l walltime=01:00:00
+
+#PBS -l select=1:ncpus=32
+
+#PBS -N 2018_cr_nojoin_no_golay_series
+
+#PBS -A d411-training
+
+
+cd $PBS_O_WORKDIR
+
+module load miniconda/python2
+
+echo "loading virtualenv"
+
+export TMPDIR=~/qiime_tmp
+
+source activate qiime1
+
+time group_significance.py -i ~/2018_02_smb/core_div_anal_Proteo_pH/taxa_plots/table_mc11800_sorted_L2.biom -m ~/2018_02_smb/mapping_complete_2018.tsv -c SamplePh -o Group_Significance_pH_proteo_L2.txt
+
+source deactivate

@@ -1,0 +1,23 @@
+#!/bin/bash --login
+
+#PBS -l walltime=01:00:00
+
+#PBS -l select=1:ncpus=32
+
+#PBS -N 2018_cr_nojoin_no_golay_series
+
+#PBS -A d411-training
+
+cd $PBS_O_WORKDIR
+
+module load miniconda/python2
+
+echo "loading virtualenv"
+
+export TMPDIR=~/qiime_tmp
+
+source activate qiime1
+
+time core_diversity_analyses.py -i OTUs_Filtered_By_Sample.biom  -o core_div_anal_pH_final -m mapping_complete_2018.tsv -e 34000 -c SamplePh -t otus1/97_otus.tree 
+
+source deactivate 
