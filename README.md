@@ -1,1 +1,7 @@
 # BIOC3301-16S-rRNA-phylotyping
+All the scripts used to perform metagenomic analysis for BIOC3301 Researh Project Paper titled: 'Using Metagenomic Analysis to Explore the Effect of pH on Relative Proteobacteria Abundance in Soil Microbiome '
+27 soil samples were collected from Gordon Sqaure Gardens, with gDNA extracted and purified and soil metadata collected. PCR amplification was used to prepare sampels for sequencing. V4 region of 16S rRNA was sequenced using sequence specific primers which has been optimised for Illumina MiSeq platform. Read information was laoded to Cirrus supercomputer system at the EPCC, where QIIME1 environment was used for data analysis. 
+Illumina read sequences were input as FASTAQ.gz files along with a metadata mapping file containing sample information and recorded soil metadata. Any further scripts for analysis were submitted to the system as .pbs files.
+The first portion of each .pbs script outlines the cluster resources required, such as walltime, budget, number of CPUs, with next part loading the python module and the next making a temporary direction (TMPDIR). The QIIME environment wsas loaded next and the following line contains the script to be run. The final line of the .pbs is for deactivation.
+.pbs files were submitted to the system using qsub.
+Any further information regarding the QIIME scripts used can be found at the QIIME website http://www.qiime.org/scripts.
